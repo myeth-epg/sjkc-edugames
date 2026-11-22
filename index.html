@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华小趣味学习乐园 | SJK(C) EduGames Portal</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #70e1f5 0%, #ffd194 100%);
+            min-height: 100vh;
+            padding: 20px 14px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #1e293b;
+        }
+
+        .portal-container {
+            width: 980px;
+            max-width: 100%;
+            background: linear-gradient(to bottom, #ffffff 0%, #f4faff 100%);
+            border: 6px solid #4CAF50;
+            border-radius: 28px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+            padding: 28px 26px;
+        }
+
+        .portal-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .portal-badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #1b5e20;
+            border: 2px solid #81c784;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .portal-title {
+            font-size: 2.1em;
+            font-weight: 900;
+            color: #1565c0;
+            margin-bottom: 6px;
+        }
+
+        .portal-subtitle {
+            font-size: 1.05em;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        .bookmark-tip {
+            background: #fff8e1;
+            border: 2px dashed #ffb300;
+            border-radius: 14px;
+            padding: 10px 16px;
+            text-align: center;
+            font-size: 0.92em;
+            color: #8d5800;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 26px;
+        }
+
+        .game-card {
+            background: #ffffff;
+            border-radius: 22px;
+            border: 3.5px solid #cbd5e1;
+            padding: 22px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+        }
+
+        .card-bm { border-color: #4CAF50; background: linear-gradient(180deg, #ffffff 0%, #f1f8e9 100%); }
+        .card-en { border-color: #2196F3; background: linear-gradient(180deg, #ffffff 0%, #e3f2fd 100%); }
+        .card-kgnd { border-color: #ff9800; background: linear-gradient(180deg, #ffffff 0%, #fff8e1 100%); }
+
+        .game-icon {
+            font-size: 3.2em;
+            margin-bottom: 10px;
+        }
+
+        .game-subject {
+            display: inline-block;
+            font-size: 0.78em;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .card-bm .game-subject { background: #c8e6c9; color: #1b5e20; }
+        .card-en .game-subject { background: #bbdefb; color: #0d47a1; }
+        .card-kgnd .game-subject { background: #ffe0b2; color: #e65100; }
+
+        .game-title {
+            font-size: 1.28em;
+            font-weight: 900;
+            margin-bottom: 4px;
+            color: #0f172a;
+        }
+
+        .game-sub {
+            font-size: 0.92em;
+            font-weight: 700;
+            color: #475569;
+            margin-bottom: 12px;
+        }
+
+        .game-desc {
+            font-size: 0.88em;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .play-btn {
+            display: block;
+            width: 100%;
+            padding: 11px 14px;
+            border-radius: 16px;
+            font-weight: 900;
+            font-size: 1.02em;
+            color: #ffffff;
+            text-decoration: none;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s;
+        }
+
+        .card-bm .play-btn { background: linear-gradient(135deg, #43a047, #2e7d32); }
+        .card-en .play-btn { background: linear-gradient(135deg, #1e88e5, #1565c0); }
+        .card-kgnd .play-btn { background: linear-gradient(135deg, #fb8c00, #ef6c00); }
+
+        .shared-note {
+            background: #e3f2fd;
+            border: 2px solid #90caf9;
+            border-radius: 16px;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 0.92em;
+            color: #1565c0;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .teacher-footer {
+            border-top: 2px dashed #cbd5e1;
+            padding-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.86em;
+            color: #64748b;
+        }
+
+        .admin-link {
+            color: #334155;
+            background: #f1f5f9;
+            border: 1.5px solid #cbd5e1;
+            padding: 5px 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.15s;
+        }
+
+        .admin-link:hover {
+            background: #e2e8f0;
+            border-color: #94a3b8;
+        }
+
+        @media (max-width: 820px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            .portal-container {
+                padding: 20px 14px;
+                border-width: 4px;
+            }
+            .portal-title {
+                font-size: 1.65em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <div class="portal-header">
+            <div class="portal-badge">🇲🇾 Malaysia SJK(C) 马来西亚华文小学</div>
+            <h1 class="portal-title">🌟 华小趣味学习乐园 (SJKC EduGames)</h1>
+            <p class="portal-subtitle">选择你想练习的科目，每天进步一点点！</p>
+        </div>
+
+        <div class="bookmark-tip">
+            ⭐ 小提示：请把本页加入浏览器书签（Bookmark / 添加到主屏幕），以后只需打开这一个网址即可玩全部游戏！
+        </div>
+
+        <div class="games-grid">
+            <!-- Game 1: Perkataan BM -->
+            <a class="game-card card-bm" href="https://perkataan-bm.netlify.app/">
+                <div>
+                    <div class="game-icon">📘</div>
+                    <span class="game-subject">国语 · Bahasa Melayu</span>
+                    <div class="game-title">华小国语词汇连连乐</div>
+                    <div class="game-sub">Perkataan BM (330 词)</div>
+                    <p class="game-desc">涵盖华小 KSSR 10 大单元常用国语词汇，附带真人马来语发音、汉语拼音与实用例句。</p>
+                </div>
+                <span class="play-btn">🚀 开始练习 (Mula)</span>
+            </a>
+
+            <!-- Game 2: English Vocabulary -->
+            <a class="game-card card-en" href="https://englishvocabulary88.netlify.app/">
+                <div>
+                    <div class="game-icon">📗</div>
+                    <span class="game-subject">英文 · English</span>
+                    <div class="game-title">华小英文词汇连连乐</div>
+                    <div class="game-sub">English Vocabulary</div>
+                    <p class="game-desc">配合华小英文课本单元，提供英式英语标准发音、华语释义与情景例句练习。</p>
+                </div>
+                <span class="play-btn">🚀 开始练习 (Start)</span>
+            </a>
+
+            <!-- Game 3: Kata Ganti Nama Diri -->
+            <a class="game-card card-kgnd" href="https://kata-ganti-nama-diri.netlify.app/">
+                <div>
+                    <div class="game-icon">✏️</div>
+                    <span class="game-subject">国语语法 · Tatabahasa</span>
+                    <div class="game-title">华小国语人称代词</div>
+                    <div class="game-sub">Kata Ganti Nama Diri (240 题)</div>
+                    <p class="game-desc">A–E 五大单元句子填充练习，涵盖第一、第二、第三人称与皇室用语，附华语解析。</p>
+                </div>
+                <span class="play-btn">🚀 开始练习 (Mula)</span>
+            </a>
+        </div>
+
+        <div class="shared-note">
+            🔑 三个游戏共用同一个学生账号与密码（PIN），无需重复注册！
+        </div>
+
+        <div class="teacher-footer">
+            <span>👩‍🏫 老师监控后台 (Admin)：</span>
+            <a class="admin-link" href="https://perkataan-bm.netlify.app/admin.html" target="_blank">📘 国语词汇后台</a>
+            <a class="admin-link" href="https://englishvocabulary88.netlify.app/admin.html" target="_blank">📗 英文词汇后台</a>
+            <a class="admin-link" href="https://kata-ganti-nama-diri.netlify.app/admin.html" target="_blank">✏️ 人称代词后台</a>
+        </div>
+    </div>
+</body>
+</html>

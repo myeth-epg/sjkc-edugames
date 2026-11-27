@@ -179,12 +179,20 @@
             border-top: 2px dashed #cbd5e1;
             padding-top: 14px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             gap: 10px;
             font-size: 0.86em;
             color: #64748b;
+        }
+
+        .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
         }
 
         .admin-link {
@@ -269,10 +277,18 @@
         </div>
 
         <div class="teacher-footer">
-            <span>👩‍🏫 老师监控后台 (Admin)：</span>
-            <a class="admin-link" href="https://perkataan-bm.netlify.app/admin.html" target="_blank">📘 国语词汇后台</a>
-            <a class="admin-link" href="https://englishvocabulary88.netlify.app/admin.html" target="_blank">📗 英文词汇后台</a>
-            <a class="admin-link" href="https://kata-ganti-nama-diri.netlify.app/admin.html" target="_blank">✏️ 人称代词后台</a>
+            <div class="footer-row">
+                <span>👩‍🏫 老师监控后台 (Admin)：</span>
+                <a class="admin-link" href="https://perkataan-bm.netlify.app/admin.html" target="_blank">📘 国语词汇后台</a>
+                <a class="admin-link" href="https://englishvocabulary88.netlify.app/admin.html" target="_blank">📗 英文词汇后台</a>
+                <a class="admin-link" href="https://kata-ganti-nama-diri.netlify.app/admin.html" target="_blank">✏️ 人称代词后台</a>
+            </div>
+            <div class="footer-row">
+                <span>📝 题库编辑器 (EditJSON)：</span>
+                <a class="admin-link" href="https://perkataan-bm.netlify.app/editjson.html" target="_blank">📘 国语词汇编辑</a>
+                <a class="admin-link" href="https://englishvocabulary88.netlify.app/editjson.html" target="_blank">📗 英文词汇编辑</a>
+                <a class="admin-link" href="https://kata-ganti-nama-diri.netlify.app/editjson.html" target="_blank">✏️ 人称代词编辑</a>
+            </div>
         </div>
     </div>
 </body>
